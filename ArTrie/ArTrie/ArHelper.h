@@ -8,10 +8,7 @@ using namespace std;
 class ArHelper
 {
 public:
-	ArHelper() {
-
-	}
-
+	
 	static void reCombination(vector<string>& vctSave, char* result, char* str, int count[], int lv, int size, int length) {
 		if (lv == size) {
 			return;
@@ -59,10 +56,8 @@ public:
 		map<char, int>::iterator it = map_letter.begin();
 		int i = 0;
 		for (it; it != map_letter.end(); it++) {
-			letters[i] = it->first;
-
-			count[i] = it->second;
-
+			letters[i] = (char)it->first;
+			count[i] = (int)it->second;
 			i++;
 		}
 

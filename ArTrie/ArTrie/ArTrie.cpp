@@ -1,10 +1,10 @@
 #pragma once
 #include <iostream>
 #include <vector>
+#include <algorithm>
 #include "ArTrieTree.h"
 #include <map>
 #include <fstream>
-
 #include "ArHelper.h"
 using namespace std;
 
@@ -82,15 +82,50 @@ void output_file(string file, vector<string> result) {
 
 	oss.close();
 }
-int main() {
+
+
+static void show_usage(std::string name)
+{
+	std::cerr << "Usage: <file_execute_name>.exe DictPath InputPath OuputPath"
+		<< "Options:\n"
+		<< "\tfile_execute_name.exe: Exe file\n"
+		<< "\tDictPath: Path to the \"Dict.txt\" file\n"
+		<< "\tInputPath: Path to the \"input.txt\" file\n"
+		<< "\tOutputPath: Path to the \"output.txt\" file\n"
+		<< "\t Sample: a.exe Dict.txt input.txt output.txt"
+		<< std::endl;
+}
+
+
+int main(int argc, char* argv[]) {
 	string input_file_name = "input.txt";
 	string output_file_name = "output.txt";
+	string dict_file_name = "Dict.txt";
+
+
+	if (argc < 3) {
+		show_usage(argv[0]);
+		return 1;
+	}
+	dict_file_name = argv[1];
+	input_file_name = argv[2];
+	output_file_name = argv[3]; 
+
+	vector<char> iv;
 	ArTrieTree trie_tree;
 	cout << endl;
-	vector<char> iv;
-	read_dict("Dic.txt", trie_tree);
+	
+
+	read_dict(dict_file_name, trie_tree);
 	cout << "Size of dict: " << trie_tree.size() << endl;
+	
+	
+
 	read_file(input_file_name, iv);
+
+	sort(iv.begin(), iv.end(), greater<char>());
+	cout << "Allow auto sort the input file " << endl;
+
 
 	vector<string> result = filter_dict(trie_tree, iv);
 	output_file(output_file_name, result);

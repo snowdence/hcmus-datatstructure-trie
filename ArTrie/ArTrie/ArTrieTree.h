@@ -11,7 +11,7 @@ public:
 	ArTrieTree() {
 		_count_dict = 0;
 		_root = new ArTrieNode();
-		cout << "ARTrieTRee " << endl;
+		cout << "ArTrieTree " << endl;
 	}
 	int size() {
 		return _count_dict;
