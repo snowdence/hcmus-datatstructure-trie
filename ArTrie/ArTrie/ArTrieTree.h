@@ -6,13 +6,18 @@ class ArTrieTree
 {
 private:
 	ArTrieNode* _root;
-
+	int _count_dict = 0;
 public:
 	ArTrieTree() {
+		_count_dict = 0;
 		_root = new ArTrieNode();
 		cout << "ARTrieTRee " << endl;
 	}
-	void insert(string key) {
+	int size() {
+		return _count_dict;
+	}
+	void insert(string key) { 
+		
 		ArTrieNode* temp = this->getRoot();
 		for (int i = 0; i < key.length(); i++) {
 			int idx = key[i] - 'a'; 
@@ -21,7 +26,13 @@ public:
 			}
 			temp = temp->getChild(idx);
 		}
-		temp->setEndFlag(true);
+		if (temp->isEndWord() == true) {
+			//existed
+		}
+		else {
+			_count_dict++;
+			temp->setEndFlag(true);
+		}
 	}
 
 	bool search(string key) {

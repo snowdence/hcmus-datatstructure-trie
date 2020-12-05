@@ -27,6 +27,9 @@
     <ClCompile Include="ArHelper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ArCore.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ArTrieNode.h">
@@ -41,5 +44,13 @@
     <ClInclude Include="ArHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ArCore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Dic.txt" />
+    <Text Include="input.txt" />
+    <Text Include="output.txt" />
   </ItemGroup>
 </Project>

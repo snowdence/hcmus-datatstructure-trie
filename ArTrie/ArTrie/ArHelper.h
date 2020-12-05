@@ -27,7 +27,7 @@ public:
 
 			result[lv] = str[i];
 
-			if (lv >=-2) {
+			if (lv >= 2) {
 				string temp = "";
 				for (int i = 0; i <= lv; i++) {
 					temp += result[i];
@@ -40,7 +40,7 @@ public:
 		}
 	}
 
-	static void combination(vector<char> v) {
+	static 	vector<string>  combination(vector<char> v) {
 		map<char, int> map_letter;
 		for (int i = 0; i < v.size(); i++) {
 			if (map_letter.find(v[i]) != map_letter.end()) {
@@ -71,10 +71,8 @@ public:
 		vector<string> vctResult;
 		reCombination(vctResult,result, letters, count,
 			0, size, length);
-
-		for (int i = 0; i < vctResult.size(); i++) {
-			cout << vctResult[i] << endl;
-		}
+		return vctResult;
+		
 
 	}
 };
